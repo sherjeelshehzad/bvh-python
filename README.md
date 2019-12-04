@@ -46,6 +46,7 @@ Python module for parsing BVH (Biovision hierarchical data) mocap files
 ```python
 >>> mocap.frame_joint_channel(22, 1, [0])
 [11.8096]
+```
  #### Get all JOINT names
 ```python
 >>> mocap.get_joints_names()
