@@ -163,6 +163,13 @@ class Bvh:
         if channel_index == -1 and value is not None:
             return value
         return float(self.frames[frame_index][joint_index + channel_index])
+    
+    #method to directly retrieve values with (frame,joint,channel[]) indices
+    def frame_joint_channel_index(self, frame_index, joint_index, channel_index):
+        values = []
+        for channel_idx in channel_index:
+            values.append(float(self.frames[frame_index][joint_index + channel_idx]))
+        return values
 
     def frame_joint_channels(self, frame_index, joint, channels, value=None):
         values = []
