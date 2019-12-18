@@ -1,5 +1,22 @@
 #a (slight) rewrite of the BvhNode class to use a structure with less child objects
 #so we can actually make this fast
+import re
+from copy import deepcopy
+
+#from https://stackoverflow.com/a/19871956
+#finds kv in node, where node is a nested dict/list structure
+def findkeys(node, kv):
+    if isinstance(node, list):
+        for i in node:
+            for x in findkeys(i, kv):
+               yield x
+    elif isinstance(node, dict):
+        if kv in node:
+            yield node[kv]
+        for j in node.values():
+            for x in findkeys(j, kv):
+                yield x
+                
 
 class BvhJoint:
     def __init__(self, value='', parent=None, children=[], channels=[], offsets=[], frames=[]):
